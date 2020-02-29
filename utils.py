@@ -2,8 +2,8 @@
 Module That will provide all the required classes for the project.
 """
 
-import _sha256
-import _sha512
+import os
+import hashlib
 
 
 def check_bytes(func):
@@ -12,7 +12,8 @@ def check_bytes(func):
         Args:
             func <Callable>: A hash function accepting bytes as input.
         Returns:
-            <Callable>: Wrapper which checks for correctness and evaluate the results.
+            <Callable>: Wrapper which checks for correctness and
+                        evaluate the results.
     """
     def inner(_input, *args, **kwargs):
         """
@@ -43,7 +44,6 @@ class HashBytes:
             raise TypeError("Expected either bytes or str")
         self.return_type = return_type
 
-
     def adj_return_type(self, hash_bytes):
         """
         Adjusts the return type according the demand of user.
@@ -59,20 +59,18 @@ class HashBytes:
     @check_bytes
     def sha256(self, data):
         """ sha256 """
-        return self.adj_return_type(_sha256.sha256(data))
+        return self.adj_return_type(hashlib.sha256(data))
 
     @check_bytes
     def sha512(self, data):
         """ sha512 """
-        return self.adj_return_type(_sha512.sha512(data))
+        return self.adj_return_type(hashlib.sha512(data))
 
 
 class HashStrings(HashBytes):
     """
     Given a String, Hash it.
     """
-    def __init__(self, return_type=str):
-        super().__init__()
     @classmethod
     def convert_to_bytes(cls, ip_str):
         """
@@ -89,8 +87,40 @@ class HashStrings(HashBytes):
 
     def sha256(self, data):
         return super().sha256(self.convert_to_bytes(data))
+
     def sha512(self, data):
         return super().sha512(self.convert_to_bytes(data))
+
+
+def read_file_bin(file_addr):
+    '''
+    Read the file from the given path.
+    Args:
+        file_path <str>: address of the file where it is stored.
+    Returns:
+        Content of the file in byte format.
+    Raises
+        FileNotFoundError: when file_addr doesn't exist.
+        PermissionError:   when file is not readable.
+                           # sudo chmod +r file_addr
+    '''
+    if not os.path.exists(file_addr):
+        raise FileNotFoundError(
+            'File Named <{}> doesn\'t exists'.format(file_addr)
+        )
+    content = None
+    with open(file_addr, 'rb') as file_handler:
+        content = file_handler.read()
+    return content
+
+
+class HashFiles(HashBytes):
+    '''Hash the contents of a file given file_path'''
+    def sha512(self, file_addr):
+        return super().sha512(read_file_bin(file_addr))
+
+    def sha256(self, file_addr):
+        return super().sha256(read_file_bin(file_addr))
 
 
 class Node:
