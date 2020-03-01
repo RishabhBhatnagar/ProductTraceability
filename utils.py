@@ -5,8 +5,13 @@ Module That will provide all the required classes for the project.
 import os
 import hashlib
 import urllib
-import urllib.parse, urllib.error, urllib.request
+import urllib.parse
+import urllib.error
+import urllib.request
 import builtins
+import tarfile
+import zipfile
+import subprocess
 
 
 def check_bytes(func):
@@ -157,9 +162,9 @@ def wget(url, output_document=None, input_file=None, tries=20, quiet=False, time
         url              <string>    : url of the file on the internet
         output_document  <string>    : file_name where fetched file should .
                                        be stored.
-        input_file       <string>    : the file path from where input links 
+        input_file       <string>    : the file path from where input links
                                        should be read.
-        tries            <int/float> : in case of timeouts, how many times 
+        tries            <int/float> : in case of timeouts, how many times
                                        should wget retry fetching the file.
                                        can be any integer or math.inf
         quiet            <bool>      : Does user want any output on the stdout.
@@ -167,16 +172,16 @@ def wget(url, output_document=None, input_file=None, tries=20, quiet=False, time
     Returns:
         successful <bool> : If fetching all the files was successful.
     '''
-    dp = lambda *x, **xx: None if quiet else builtins.print(*x, *xx)
+    log = lambda *x, **xx: None if quiet else builtins.print(*x, *xx)
 
-    if not timeout > 0:
+    if timeout <= 0:
         raise ValueError("Timeout should be greater than 0.")
 
     if input_file is not None:
         # read links from the mentioned file path.
         try:
-            with open(input_file, 'r') as fh:
-                links = fh.read().split('\n')
+            with open(input_file, 'r') as file_handler:
+                links = file_handler.read().split('\n')
 
             # stripping all redundant newlines and white spaces.
             links = [l for l in map(lambda l: l.strip(), links) if l]
@@ -186,14 +191,16 @@ def wget(url, output_document=None, input_file=None, tries=20, quiet=False, time
             raise PermissionError('File {} not readable.'.format(input_file))
 
         if len(links) > 1 and output_document is not None:
-            # found multiple files to be downloaded but 
+            # found multiple files to be downloaded but
             #     only one output file name.
             raise ValueError('Don\'t know which file to be stored where.')
 
         # fetch all the files stored in links recursively(one level deep).
         for link in links:
+            log('Found more than one links in the file.')
+            log('Downloading it in FCFS order.')
             return all(wget(link, tries))
-    
+
     try:
         # parse url to check if it's valid (EAFP).
         parsed_url = urllib.parse.urlparse(url)
@@ -202,18 +209,46 @@ def wget(url, output_document=None, input_file=None, tries=20, quiet=False, time
 
     if output_document is None:
         output_document = os.path.basename(parsed_url.path)
-    
+    log('Storing the File in', output_document)
+
     epoch = 0
     while epoch < tries:
         epoch += 1
         try:
-            dp('Try', epoch)
+            log('Trying {}th time'.format(epoch))
             response = urllib.request.urlopen(url, timeout=timeout)
-            with open(output_document, 'wb') as fh:
-                fh.write(response.read())
+            with open(output_document, 'wb') as file_handler:
+                file_handler.write(response.read())
+            log("File from {} Downloaded Successfully....".format(url))
             return True  # successfully downloaded the file.
         except urllib.error.URLError as err:
-            dp(type(err))
-    else:
-        return False
+            log(type(err))
+    return False
+
+
+def unzip(file_path):
+    '''
+    Unzips tar.gz or zip files in current folder.
+    Args:
+        file_path <str>: path to the zip file alongwith filename.
+    '''
+    if file_path.endswith('gz'):
+        with tarfile.open(file_path, 'r:gz') as tar:
+            tar.extractall()
+    elif file_path.endswith('zip'):
+        with zipfile.ZipFile(file_path, 'r') as zfh:
+            zfh.extractall('.')
+
+
+def run_command(command):
+    '''
+    Runs the given command and returns the output ignoring any stderr.
+    Args:
+        command <str>: command to execute on shell.
+    Returns:
+        op <str>: output of the execution.
+    '''
+    print("running this command:", command)
+    op = subprocess.run(command.split(), stdout=subprocess.PIPE).stdout
+    return op.decode('utf8')
 
