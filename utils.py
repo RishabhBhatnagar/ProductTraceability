@@ -4,6 +4,9 @@ Module That will provide all the required classes for the project.
 
 import os
 import hashlib
+import urllib
+import urllib.parse, urllib.error, urllib.request
+import builtins
 
 
 def check_bytes(func):
@@ -145,4 +148,72 @@ class Node:
 
     def get_acc_info(self):
         """Not Implemented Yet"""
+
+
+def wget(url, output_document=None, input_file=None, tries=20, quiet=False, timeout=900):
+    '''
+    wget equivalent in python3 made especially for windows' users.
+    Args:
+        url              <string>    : url of the file on the internet
+        output_document  <string>    : file_name where fetched file should .
+                                       be stored.
+        input_file       <string>    : the file path from where input links 
+                                       should be read.
+        tries            <int/float> : in case of timeouts, how many times 
+                                       should wget retry fetching the file.
+                                       can be any integer or math.inf
+        quiet            <bool>      : Does user want any output on the stdout.
+        timeout          <int>       : should be a natural number
+    Returns:
+        successful <bool> : If fetching all the files was successful.
+    '''
+    dp = lambda *x, **xx: None if quiet else builtins.print(*x, *xx)
+
+    if not timeout > 0:
+        raise ValueError("Timeout should be greater than 0.")
+
+    if input_file is not None:
+        # read links from the mentioned file path.
+        try:
+            with open(input_file, 'r') as fh:
+                links = fh.read().split('\n')
+
+            # stripping all redundant newlines and white spaces.
+            links = [l for l in map(lambda l: l.strip(), links) if l]
+        except FileNotFoundError:
+            raise FileNotFoundError('File {} not found.'.format(input_file))
+        except PermissionError:
+            raise PermissionError('File {} not readable.'.format(input_file))
+
+        if len(links) > 1 and output_document is not None:
+            # found multiple files to be downloaded but 
+            #     only one output file name.
+            raise ValueError('Don\'t know which file to be stored where.')
+
+        # fetch all the files stored in links recursively(one level deep).
+        for link in links:
+            return all(wget(link, tries))
+    
+    try:
+        # parse url to check if it's valid (EAFP).
+        parsed_url = urllib.parse.urlparse(url)
+    except ValueError:
+        raise ValueError("Invalid URL: {}".format(url))
+
+    if output_document is None:
+        output_document = os.path.basename(parsed_url.path)
+    
+    epoch = 0
+    while epoch < tries:
+        epoch += 1
+        try:
+            dp('Try', epoch)
+            response = urllib.request.urlopen(url, timeout=timeout)
+            with open(output_document, 'wb') as fh:
+                fh.write(response.read())
+            return True  # successfully downloaded the file.
+        except urllib.error.URLError as err:
+            dp(type(err))
+    else:
+        return False
 
