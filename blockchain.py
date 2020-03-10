@@ -7,9 +7,13 @@ import os
 hash_fn = utils.HashBytes(str).sha256
 
 
-class Transaction(object):
+class Transaction(dict):
+    # making it dict to insure json serializability.
     def __init__(self, data=''):
+        if not any(map(lambda x: isinstance(x, data), (None, str))):
+            raise ValueError('data should be either None or a string')
         self.data = data
+        super().__init__(data=data)
 
 
 class Block(object):
@@ -21,7 +25,8 @@ class Block(object):
         self.logger = logger if logger is not None else utils.DefaultLogger()
         if not self.are_valid_txs(txs):
             raise ValueError('Transaction must be instances of {} class'.format(Transaction.__name__))
- 
+        self.txs = txs
+
     def are_valid_txs(self, txs):
         # allows empty collection of transactions
         return all(isinstance(tx, Transaction) for tx in txs)
@@ -114,8 +119,8 @@ class Blockchain(object):
         # ll traversal:
 
         # note: it allows unmined genesis block.
-        print(self.chain)
         for curr, _next in zip(self.chain, self.chain[1:]):
             if not _next.valid_block() or _next.prev_hash != curr.hash:
                 return False
         return True
+
