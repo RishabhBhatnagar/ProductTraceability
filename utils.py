@@ -3,6 +3,7 @@ Module That will provide all the required classes for the project.
 """
 
 import os
+import sys
 import hashlib
 import urllib
 import urllib.parse
@@ -12,30 +13,6 @@ import builtins
 import tarfile
 import zipfile
 import subprocess
-
-
-def check_bytes(func):
-    """
-        Decorator which checks if the input to the hash function is bytes.
-        Args:
-            func <Callable>: A hash function accepting bytes as input.
-        Returns:
-            <Callable>: Wrapper which checks for correctness and
-                        evaluate the results.
-    """
-    def inner(_input, *args, **kwargs):
-        """
-        Actual wrapper which will check if the input is bytes.
-        Args:
-            _input: bytes input
-        Raises:
-            TypeError: if the _input is not bytes.
-        """
-        try:
-            return func(_input, *args, **kwargs)
-        except TypeError:
-            raise TypeError("Expected a Byte Like Object")
-    return inner
 
 
 class HashBytes:
@@ -52,6 +29,11 @@ class HashBytes:
             raise TypeError("Expected either bytes or str")
         self.return_type = return_type
 
+    def check_bytes(self, data):
+        if isinstance(data, bytes):
+            return True
+        raise TypeError('Data must be of type <bytes>.')
+
     def adj_return_type(self, hash_bytes):
         """
         Adjusts the return type according the demand of user.
@@ -64,14 +46,14 @@ class HashBytes:
             return hash_bytes.hexdigest()
         return hash_bytes.digest()
 
-    @check_bytes
     def sha256(self, data):
         """ sha256 """
+        self.check_bytes(data)
         return self.adj_return_type(hashlib.sha256(data))
 
-    @check_bytes
     def sha512(self, data):
         """ sha512 """
+        self.check_bytes(data)
         return self.adj_return_type(hashlib.sha512(data))
 
 
@@ -252,3 +234,11 @@ def run_command(command):
     op = subprocess.run(command.split(), stdout=subprocess.PIPE).stdout
     return op.decode('utf8')
 
+
+class DefaultLogger:
+    def __init__(self):
+        pass
+    def log(self, *args, **kw):
+        # Augiwan's answer: https://stackoverflow.com/questions/2654113/how-to-get-the-callers-method-name-in-the-called-method
+        caller = sys._getframe().f_back.f_code.co_name
+        print('{} says: :'.format(caller), *args, **kw)
