@@ -1,2 +1,1 @@
-_sha256
-_sha512
+pyqrcode
