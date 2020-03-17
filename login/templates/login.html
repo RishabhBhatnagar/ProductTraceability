@@ -136,20 +136,6 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
-
-
-function httpGet(theUrl)
-{
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
-    xmlHttp.send( null );
-    return xmlHttp.responseText;
-}
-
-
-function mobile(){
-  window.alert(httpGet("https://192.168.2.206:5000/validate_user?uname=a"));
-}
 </script>
 
 
@@ -162,7 +148,7 @@ function mobile(){
 
 <div id="id01" class="modal">
   
-  <form class="modal-content animate" method="Get">
+  <form class="modal-content animate" method="Get" action='/login_handler'>
     <div class="imgcontainer">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
       <img src="C:\Users\Sneha\Downloads\Desktop\7.png" alt="Avatar" class="avatar">
@@ -173,7 +159,7 @@ function mobile(){
       <input type="text" placeholder="Enter Username" name="uname" required>
 
       <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
+      <input type="password" placeholder="Enter Password" name="pswd" required>
         
       <button type="submit" onclick="mobile()">Login</button>
       <label>
