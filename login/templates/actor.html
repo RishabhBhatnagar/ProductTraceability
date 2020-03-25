@@ -2,16 +2,29 @@
 <html>
 <head>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allerta+Stencil">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+function openAdd() {
+  window.open("add_detail.html");
+}
+
+function openView() {
+  window.open("view_details.html");
+}
+
+
+function openLogout() {
+  window.open("home.html");
+}
+
+</script>
+
 
 <style>
 
   body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background-image: url("bg.png")
+    background-image: url("/static/bg.png")
   }
 
   /******************  INFORMATION  *******************/
@@ -20,16 +33,16 @@
   .location {
     position: fixed;
     margin: 30px;
-    top:500px;
+    top:160px;
   }
 
-  h1 { color: #00fff0; font-family: "Allerta Stencil", Sans-serif; font-size: 55px; font-weight:bold; line-height:48px; margin: 0; }
+  h1 { color: #00fff0; font-family: "Allerta Stencil", Sans-serif; font-size: 40px; font-weight:bold; line-height:48px; margin: 0; }
 
   h2 { color: #d3d3d3; font-family: 'Source Sans Pro', sans-serif; font-size: 30px; font-style:italic; line-height:32px; margin: 0 0 24px; }
 
-  h4 {font-size:20px; color: #d3d3d3; font-family: 'Allerta Stencil', sans-serif; }
+  h4 { font-size:20px; color: #d3d3d3; font-family: 'Allerta Stencil', sans-serif; }
 
-  h3 {font-size:35px; color: #d3d3d3; font-family: 'Allerta Stencil', sans-serif; }
+  h3 { font-size:35px; color: #d3d3d3; font-family: 'Allerta Stencil', sans-serif; }
 
 
   /*********************  HORIZONTAL BAR 1  ***********************/
@@ -71,6 +84,30 @@
     width: 140px;  
     height: 250px;  
     background: rgba(0,255,255,0.4);
+  }
+
+
+  /****************  ADD AND VIEW BUTTON  *****************/
+
+
+  .button {
+    font-size: 30px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: rgba(0,255,255,0.6);
+    border: none;
+    border-radius: 20px;
+    box-shadow: 9px 9px rgba(255,255,255,0.6);
+    width:225px;
+    height:225px;
+  }
+
+  .button:active {
+    background-color: rgba(150,150,150,0.8);
+    box-shadow: 5px 5px #666;
+    transform: translateY(4px);
   }
 
 
@@ -120,22 +157,21 @@
     }
   }
 
+
+
 </style>
 
 
-<script>
-</script>
-
 
 </head>
-
 <body>
+
 
   <br><br>
 
   <div class="topnav">
   
-    <img src="logo.png" height=50px width=50px align="left" style=" position: absolute; top: 50px;left:50px;">
+    <img src="/static/logo.png" height=50px width=50px align="left" style=" position: absolute; top: 50px;left:50px;">
     <font style=" position: absolute; top: 20px;left:110px;"><h3>CTC</h3></font>
 
     <div class="search-container">
@@ -149,17 +185,25 @@
 
   <div class="topbar2"></div>
 
-  <h4>
-    <p class="blocks" style="right:50px;"><br><br><br><br><br><br><br><br><a href="contact.html" style="color: white;"> CONTACT</a></p>
-    <p class="blocks" style="right:210px;"><br><br><br><br><br><br><br><br><a href="login.html" style="color: white;">  LOGIN</a></p>
-    <p class="blocks" style="right:370px;"><br><br><br><br><br><br><br><br><a href="about.html" style="color: white;">  ABOUT</a></p>
-    <p class="blocks" style="right:530px;"><br><br><br><br><br><br><br><br><a href="home.html" style="color: white;">  HOME</a></p>
-  </h4>
-  
+   
   <div class="location">
-    <h1>CHECK THE CHAIN<br></h1>
-    <h2><br>CTC provides a platform to deal with the issues of opacity, centralized, inefficient track record of product prevelant in the current market by tracing the food supply chain using a Distributed Ledger Technology, Blockchain.<br> It helps the user to access the information regarding the transactions in food supply chain in real-time enforcing transparency, security and authenticity. <br>Every activity done on the product would have a record in the blockchain which cannot be tampered once entered thus providing the end consumer a trusted information about his product.</h2>
+    <h1>WELCOME (****USERNAME****)!<br></h1>
   </div>
+
+<h2 style="position: absolute;top: 325px;left:560px;">      Add a block</h2> <h2 style="position: absolute;top: 325px;left:920px;">    View product details</p></h2>
+
+
+<button class="button" onclick="openAdd()" style="position:absolute;top:375px; left:535px"><img height="200px" width="200px" src="/static/add.png"></button>
+<button class="button" onclick="openView()" style="position:absolute;top:375px; left:945px"><img height="200px" width="200px" src="/static/product.png"></button>
+
+<button class="button" onclick="openLogout()" style="position:absolute;top:185px; right:60px;width:200px;height:50px">LOGOUT</button>
+
+<a href="help.html" style="position: absolute;bottom: 20px;right: 60px;"><h3 style=" font-size: 20px;">Need help?</h3></a>
+
 
 </body>
 </html>
+
+
+
+
