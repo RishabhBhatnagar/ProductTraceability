@@ -1,192 +1,519 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allerta+Stencil">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
 <style>
-body {font-family: Arial, Helvetica, sans-serif;}
 
-/* Full-width input fields */
-input[type=text], input[type=password] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
 
-/* Set a style for all buttons */
-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-}
+  body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url("bg.png");
+  }
 
-button:hover {
-  opacity: 0.8;
-}
+  /****************  LOGIN AND SIGNUP BUTTON  *****************/
 
-/* Extra styles for the cancel button */
-.cancelbtn {
-  width: auto;
-  padding: 10px 18px;
-  background-color: #f44336;
-}
+  .button {
+    font-size: 30px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: rgba(0,255,255,0.6);
+    border: none;
+    border-radius: 20px;
+    box-shadow: 9px 9px rgba(255,255,255,0.6);
+    width:165px;
+    height:70px;
+  }
 
-/* Center the image and position the close button */
-.imgcontainer {
-  text-align: center;
-  margin: 24px 0 12px 0;
-  position: relative;
-}
+  .button:active {
+    background-color: rgba(150,150,150,0.8);
+    box-shadow: 5px 5px #666;
+    transform: translateY(4px);
+  }
 
-img.avatar {
-  width: 10%;
-  border-radius: 20%;
-}
 
-.container {
-  padding: 16px;
-}
+  /*********************  INFORMATION  **********************/
 
-span.psw {
-  float: left;
-  padding-top: 16px;
-}
 
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  padding-top: 60px;
-}
+  .location {
+    position: fixed;
+    margin: 30px;
+    top:500px;
+  }
 
-/* Modal Content/Box */
-.modal-content {
-  background-color: #fefefe;
-  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-}
+  h1 { 
+    color: #00fff0; 
+    font-family: "Allerta Stencil", Sans-serif; 
+    font-size: 55px; 
+    font-weight: bold; 
+    line-height: 48px; 
+    margin: 0; 
+  }
 
-/* The Close Button (x) */
-.close {
-  position: absolute;
-  right: 25px;
-  top: 0;
-  color: #000;
-  font-size: 35px;
-  font-weight: bold;
-}
+  h2 {
+    color: #d3d3d3; 
+    font-family: 'Source Sans Pro', sans-serif; 
+    font-size: 30px; 
+    font-style:italic; 
+    line-height: 32px; 
+    margin: 0 0 24px; 
+  }
 
-.close:hover,
-.close:focus {
-  color: red;
-  cursor: pointer;
-}
+  h4 {
+    font-size:20px;
+    color: #d3d3d3; 
+    font-family: 'Allerta Stencil', sans-serif; 
+  }
 
-/* Add Zoom Animation */
-.animate {
-  -webkit-animation: animatezoom 0.6s;
-  animation: animatezoom 0.6s
-}
+  h3 {
+    font-size:35px;
+    color: #d3d3d3; 
+    font-family: 'Allerta Stencil', sans-serif; 
+  }
 
-@-webkit-keyframes animatezoom {
-  from {-webkit-transform: scale(0)} 
-  to {-webkit-transform: scale(1)}
-}
-  
-@keyframes animatezoom {
-  from {transform: scale(0)} 
-  to {transform: scale(1)}
-}
 
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
+  /*********************  HORIZONTAL BAR 1 ***********************/
+
+
+  .topnav {
+    background: rgb(0, 0, 0); /* Fallback color */
+    background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+    color: #f1f1f1;
+    width: 100%;
+    height:78px;
+  }
+
+  .topnav button {
+    float: right;
+    color: #f2f2f2;
+    padding: 10px 26px;
+    text-decoration: none;
+    font-size: 20px;
+  }
+
+
+  /**********************  HORIZONTAL BAR 2  ************************/
+
+
+  .topbar2 {
+    background: rgb(0, 0, 0); /* Fallback color */
+    background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+    color: #f1f1f1;
+    width: 100%;
+    height:8px;
+    padding:8px;
+  }
+
+  .blocks {
+    position: fixed;
+    top: 126px;
+    text-align: center;
+    width: 140px;  
+    height: 250px;  
+    background: rgba(0,255,255,0.4);
+  }
+
+
+  /*********************  LOGIN AND SIGNUP WINDOW  **********************/
+
+
+  #i1[type=text], #i2[type=password], #i3[type=number],#i4[type=list]{
+    width: 350px;
+    padding: 12px 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 18px
+  }
+
+  label {
+    font-size: 20px;
+    font-family: "Allerta Stencil";
+  }
+
+  #bl {
+    background-color: rgba(0,150,150,0.7);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  #bl:hover {
+    opacity: 0.8;
+  }
+
+  .cancellogin {
+    float:right;
+    width: 80px;
+    height: 42px;
+    background-color: rgba(150,0,0,0.7);
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  .cancelsignup {
+    float: left;
+    width: 50%;
+    height: 42px;
+    background-color: rgba(150,0,0,0.7);
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  .signupbtn{
+    float: left;
+    width: 50%;
+    height: 42px;
+    background-color: rgba(0,150,150,0.7);
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  .modal2 .cancelbtn {
+    float: left;
+    width: 50%;
+  }
+
+  .imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position: relative;
+  }
+
+  img.avatar {
+    width: 17%;
+    border-radius: 20%;
+  }
+
+  .container {
+    padding: 16px;
+  }
+
+  .container1 {
+    padding: 16px;
+    height:50px;
+  }
+
   span.psw {
-     display: block;
-     float: none;
+    float: left;
+    padding-top: 16px;
   }
-  .cancelbtn {
-     width: 100%;
+
+  .modal {
+    display: none; /* Hidden by default */
+    position: absolute; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left:0px;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.9); /* BACKGOUND WHEN WINDOW IS OPEN */
+    color: white;
+    font-family: "Allerta Stencil";
   }
-}
-</style>
+
+  .modal-content {
+    background-color: rgba(150,150,150,0.3);
+    border: 1px solid #888;
+    width: 40%; 
+  }
+
+  hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+  }
+
+  .close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+  }
+
+  .close1 {
+    position: absolute;
+    right: 40px;
+    top: 5px;
+    font-size: 40px;
+    font-weight: bold;
+    color: #000;
+  }
+
+  .close1, .close:hover,
+  .close1, .close:focus {
+    color: red;
+    cursor: pointer;
+  }
+
+  .animate {
+    animation: animatezoom 0.6s
+  }
+
+  .clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  @keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+  }
+
+  @media screen and (max-width: 300px) {
+    span.psw {
+      display: block;
+      float: none;
+    }
+    .cancelbtn {
+      width: 100%;
+    }
+    .signupbtn {
+      width: 100%;
+    }
+  }
 
 
-<script>
-// Get the modal
-var modal = document.getElementById('id01');
+  /************************  SEARCH  ************************/
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
+
+  .topnav .search-container {
+    position: absolute;
+    top:60px;
+    right:40px;
+  }
+
+  .topnav #is[type=text] {
+    padding: 6px;
+    font-size: 17px;
+    border: cyan;
+  }
+
+  .topnav .search-container button {
+    float: right;
+    padding: 6px 10px;
+    margin-right: 16px;
+    background: rgba(0,255,255,0.8);
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .topnav .search-container button:hover {
+    background: #000000;
+  }
+
+  @media screen and (max-width: 600px) {
+    .topnav .search-container {
+      float: none;
+    }
+    .topnav input[type=text], .search-container button {
+      float: none;
+      display: block;
+      text-align: left;
+      width: 100%;
+      margin: 0;
+      padding: 14px;
+    }
+    .topnav input[type=text] {
+      border: 1px solid #ccc;  
     }
 }
 
 
-function httpGet(theUrl)
-{
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
-    xmlHttp.send( null );
-    return xmlHttp.responseText;
-}
+</style>
 
 
-function mobile(){
-  window.alert(httpGet("https://192.168.2.206:5000/validate_user?uname=a"));
-}
+<script>
+
 </script>
 
 
 </head>
+
 <body>
 
-<h2>Modal Login Form</h2>
 
-<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+<br><br>
 
-<div id="id01" class="modal">
-  
-  <form class="modal-content animate" method="Get">
+<div class="topnav">
+    <img src="logo.png" height=50px width=50px align="left" style=" position: absolute; top: 50px;left:50px;">
+    <font style=" position: absolute; top: 20px;left:110px;"><h3>CTC</h3></font>
+
+    <div class="search-container">
+      <form action="">
+        <input id="is" type="text" placeholder="Search..." name="search">
+        <button type="submit"><i class="fa fa-search"></i></button>
+      </form>
+    </div>
+</div>
+
+<br><div class="topbar2"></div>
+
+<h4>
+  <p class="blocks" style="right:50px;"><br><br><br><br><br><br><br><br><a href="contact.html" style="color: white;"> CONTACT</a></p>
+  <p class="blocks" style="right:210px;"><br><br><br><br><br><br><br><br><a href="login.html" style="color: white;">  LOGIN</a></p>
+  <p class="blocks" style="right:370px;"><br><br><br><br><br><br><br><br><a href="about.html" style="color: white;">  ABOUT</a></p>
+  <p class="blocks" style="right:530px;"><br><br><br><br><br><br><br><br><a href="home.html" style="color: white;">  HOME</a></p>
+</h4>
+
+<div class="location">
+  <h1>
+    LOGIN<br>
+  </h1>
+  <h2>
+    <br>Login to view details of product or to add a block to the chain.
+  </h2>
+</div>
+
+<button class="button" onclick="document.getElementById('id01').style.display='block'" style="position:absolute;top:590px; right:400px">LOGIN</button>
+<button class="button" onclick="document.getElementById('id02').style.display='block'" style="position:absolute;top:590px; right:160px">SIGNUP</button>
+
+
+
+
+<div id="id01" class="modal" style="top: 0px;">
+
+  <form class="modal-content animate" method="Get" style="position: absolute;top: 220px;left:520px;">
+
     <div class="imgcontainer">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <img src="C:\Users\Sneha\Downloads\Desktop\7.png" alt="Avatar" class="avatar">
+      <img src="pic.png" alt="Avatar" class="avatar">
     </div>
 
     <div class="container">
-      <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
+    
+      <table width=1000px cellpadding="5px">
 
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
-        
-      <button type="submit" onclick="mobile()">Login</button>
-      <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label>
+        <tr>
+          <td align="right"><label for="uname"><b>Username:</b></label></td>
+          <td><input id="i1" type="text" placeholder="Enter Username" name="uname" required></td>
+        </tr>
+
+        <tr>
+          <td align="right"><label for="psw"><b>Password:</b></label></td>
+          <td><input id="i2" type="password" placeholder="Enter Password" name="psw" required></td>
+        </tr>
+
+      </table>
+
+      <button id="bl" type="submit" onclick="mobile()">Login</button>
+
+      <label><input type="checkbox" checked="checked" name="remember"> Remember me</label>
+    
     </div>
 
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+    <div class="container1" style="background-color:rgba(0,0,0,0.4);" >
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancellogin">Cancel</button>
       <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  
+  </form>
+</div>
+
+
+
+
+<div id="id02" class="modal" style="top: 0px;">
+  
+  <form class="modal-content animate" action="" style="position: absolute;top:20px;left: 520px;">
+    
+    <div class="imgcontainer">
+      <div class="close_signup">
+        <span onclick="document.getElementById('id02').style.display='none'" class="close1" title="Close Modal">&times;</span>
+      </div>
+      <h1>Sign Up</h1>
+      <p>Please fill in this form to create an account.</p>
+    </div>
+
+    <hr>
+    
+    <div class="container">
+      <table width=795px cellpadding="5px">
+        
+        <tr>
+          <td align="right"><label for="fname"><b>First Name</b></label></td>
+          <td><input id="i1" type="text" placeholder="Enter First Name" name="fname" required></td>
+        </tr>
+
+        <tr>
+          <td align="right"><label for="lname"><b>Last Name</b></label></td>
+          <td><input id="i1" type="text" placeholder="Enter Last Name" name="lname" required></td>
+        </tr>
+
+        <tr>
+          <td align="right"><label for="age"><b>Age</b></label></td>
+          <td><input id="i3" type="number" placeholder="Enter Age" name="age" required></td>
+        </tr>
+
+        <tr>
+          <td align="right"><label for="gender"><b>Gender</b></label></td>
+          <td><input type="radio" id="male i4" name="gender" value="male"><label for="male"><b>Male</b></label><input type="radio" id="female i4" name="gender" value="female"><label for="female"><b>Female</b></label><br></td>
+        </tr>
+
+        <tr>
+          <td align="right"><label for="address"><b>Address</b></label></td>
+          <td><input id="i1" type="text" placeholder="Enter Address" name="address" required></td>
+        </tr>
+
+        <tr>
+          <td align="right"><label for="actor"><b>Join as</b></label></td>
+          <td><input id="i4" list="actor" type="list" placeholder="Select your role" name="actor" > 
+              <datalist id="actor">
+                <option value="Producer">
+                <option value="Processor">
+                <option value="Distributor">
+                <option value="Wholesaler">
+                <option value="Retailer">
+              </datalist><br>
+          </td>
+        </tr>
+
+        <tr>
+          <td align="right"><label for="email"><b>Email</b></label></td>
+          <td><input id="i1" type="text" placeholder="Enter Email" name="email" required></td>
+        </tr>
+
+        <tr>
+          <td align="right"><label for="psw"><b>Password</b></label></td>
+          <td><input id="i2" type="password" placeholder="Enter Password" name="psw" required></td>
+        </tr>
+
+        <tr>
+          <td align="right"><label for="psw-repeat"><b>Repeat Password</b></label></td>
+          <td><input id="i2" type="password" placeholder="Repeat Password" name="psw-repeat" required></td>
+        </tr>
+
+      </table>
+      
+      <label><input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me </label>
+      <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+
+      <div class="modal2">
+        <div class="clearfix">
+          <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelsignup">Cancel</button>
+          <button type="button" class="signupbtn">Sign Up</button>
+        </div>
+      </div>
+
     </div>
   </form>
 </div>
+
 
 </body>
 </html>
