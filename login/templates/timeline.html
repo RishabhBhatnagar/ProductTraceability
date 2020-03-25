@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  
+  function openGoBack() {
+    window.open("view_details.html");
+  }
+
+  function openLogout() {
+    window.open("home.html");
+  }
+
+
+</script>
+
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-image: url("/static/bg.png");
+  font-family: Helvetica, sans-serif;
+}
+
+  
+  /*********************  INFORMATION  **********************/
+
+
+  .location {
+    position: fixed;
+    margin: 30px;
+    top:150px;
+  }
+
+  h1 { 
+    color: #00fff0; 
+    font-family: "Allerta Stencil", Sans-serif; 
+    font-size: 55px; 
+    font-weight: bold; 
+    line-height: 48px; 
+    margin: 0; 
+  }
+
+  h2 {
+    color: #000000; 
+    font-family: 'Source Sans Pro', sans-serif; 
+    font-size: 30px; 
+    font-style:italic; 
+    line-height: 32px; 
+    margin: 0 0 24px; 
+  }
+
+  h4 {
+    font-size:20px;
+    color: #d3d3d3; 
+    font-family: 'Allerta Stencil', sans-serif; 
+  }
+
+  h3 {
+    font-size:35px;
+    color: #d3d3d3; 
+    font-family: 'Allerta Stencil', sans-serif; 
+  }
+
+
+
+
+
+  /*********************  HORIZONTAL BAR 1 ***********************/
+
+
+  .topnav {
+    background: rgb(0, 0, 0); /* Fallback color */
+    background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+    color: #f1f1f1;
+    width: 100%;
+    height:78px;
+  }
+
+  .topnav button {
+    float: right;
+    color: #f2f2f2;
+    padding: 10px 26px;
+    text-decoration: none;
+    font-size: 20px;
+  }
+
+
+  /**********************  HORIZONTAL BAR 2  ************************/
+
+
+  .topbar2 {
+    background: rgb(0, 0, 0); /* Fallback color */
+    background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+    color: #f1f1f1;
+    width: 100%;
+    height:8px;
+    padding:8px;
+  }
+
+  .blocks {
+    position: fixed;
+    top: 126px;
+    text-align: center;
+    width: 140px;  
+    height: 250px;  
+    background: rgba(0,255,255,0.4);
+  }
+
+    /****************  BUTTONS  *****************/
+
+
+  .button {
+    font-size: 30px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: rgba(0,255,255,0.6);
+    border: none;
+    border-radius: 20px;
+    box-shadow: 9px 9px rgba(255,255,255,0.6);
+  }
+
+  .button:active {
+    background-color: rgba(150,150,150,0.8);
+    box-shadow: 5px 5px #666;
+    transform: translateY(4px);
+  }
+
+
+
+  /************************  SEARCH  ************************/
+
+
+  .topnav .search-container {
+    position: absolute;
+    top:60px;
+    right:40px;
+  }
+
+  .topnav #is[type=text] {
+    padding: 6px;
+    font-size: 17px;
+    border: cyan;
+  }
+
+  .topnav .search-container button {
+    float: right;
+    padding: 6px 10px;
+    margin-right: 16px;
+    background: rgba(0,255,255,0.8);
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .topnav .search-container button:hover {
+    background: #000000;
+  }
+
+  @media screen and (max-width: 600px) {
+    .topnav .search-container {
+      float: none;
+    }
+    .topnav input[type=text], .search-container button {
+      float: none;
+      display: block;
+      text-align: left;
+      width: 100%;
+      margin: 0;
+      padding: 14px;
+    }
+    .topnav input[type=text] {
+      border: 1px solid #ccc;  
+    }
+}
+
+
+
+
+
+
+
+
+/* The actual timeline (the vertical ruler) */
+.timeline {
+  position: relative;
+  top:160px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* The actual timeline (the vertical ruler) */
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  background-color: white;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -3px;
+}
+
+/* Container around content */
+.container {
+  padding: 10px 40px;
+  position: relative;
+
+  background-color: inherit;
+  width: 50%;
+}
+
+/* The circles on the timeline */
+.container::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: -17px;
+  background-color: white;
+  border: 4px solid #00AAAA;
+  top: 40px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Place the container to the left */
+.left {
+  left: 0;
+}
+
+/* Place the container to the right */
+.right {
+  left: 50%;
+}
+
+/* Add arrows to the left container (pointing right) */
+.left::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 40px;
+  width: 0;
+  z-index: 1;
+  right: 30px;
+  border: medium solid white;
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent white;
+}
+
+/* Add arrows to the right container (pointing left) */
+.right::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 40px;
+  width: 0;
+  z-index: 1;
+  left: 30px;
+  border: medium solid white;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent white transparent transparent;
+}
+
+/* Fix the circle for containers on the right side */
+.right::after {
+  left: -16px;
+}
+
+/* The actual content */
+.content {
+  padding: 20px 30px;
+  background-color: white;
+  position: relative;
+  border-radius: 6px;
+}
+
+/* Media queries - Responsive timeline on screens less than 600px wide */
+@media screen and (max-width: 600px) {
+  /* Place the timelime to the left */
+  .timeline::after {
+  left: 31px;
+  }
+  
+  /* Full-width containers */
+  .container {
+  width: 100%;
+  padding-left: 70px;
+  padding-right: 25px;
+  }
+  
+  /* Make sure that all arrows are pointing leftwards */
+  .container::before {
+  left: 60px;
+  border: medium solid white;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent white transparent transparent;
+  }
+
+  /* Make sure all circles are at the same spot */
+  .left::after, .right::after {
+  left: 15px;
+  }
+  
+  /* Make all right containers behave like the left ones */
+  .right {
+  left: 0%;
+  }
+}
+</style>
+</head>
+<body>
+
+
+<br><br>
+
+<div class="topnav">
+    <img src="/static/logo.png" height=50px width=50px align="left" style=" position: absolute; top: 50px;left:50px;">
+    <font style=" position: absolute; top: 20px;left:110px;"><h3>CTC</h3></font>
+
+    <div class="search-container">
+      <form action="">
+        <input id="is" type="text" placeholder="Search..." name="search">
+        <button type="submit"><i class="fa fa-search"></i></button>
+      </form>
+    </div>
+</div>
+
+<br><div class="topbar2"></div>
+
+
+<fieldset style="position: absolute;top:150px;left:650px;width:500px;height:65px;">
+  <h1 style="font-size: 30px">Product Id:</h1> 
+</fieldset>
+<fieldset style="position: absolute;top:230px;left:625px;width:550px;height:65px;">
+  <h1 style="font-size: 30px">Product Name:</h1> 
+</fieldset>
+
+
+
+
+<div class="timeline">
+  <div class="container left">
+    <div class="content">
+      <h2>Producer</h2>
+      <p>Display details of and added by producer</p>
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <h2>Processor</h2>
+      <p>Display details of and added by processor</p>
+    </div>
+  </div>
+  <div class="container left">
+    <div class="content">
+      <h2>Wholesaler</h2>
+      <p>Display details of and added by wholesaler</p>
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <h2>Distributor</h2>
+      <p>Display details of and added by distributor</p>
+    </div>
+  </div>
+  <div class="container left">
+    <div class="content">
+      <h2>Retailer</h2>
+      <p>Display details of and added by retailer</p>
+    </div>
+  </div>
+  
+</div>
+
+
+<button class="button" onclick="openGoBack()" style="position:absolute;top:165px; right:50px; width:180px;height:50px; font-size: 25px;">GO BACK</button>
+<button class="button" onclick="openLogout()" style="position:absolute;top:245px; right:50px; width:180px;height:50px; font-size: 25px;">LOGOUT</button>
+
+
+
+</body>
+</html>

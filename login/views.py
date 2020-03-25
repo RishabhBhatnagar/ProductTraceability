@@ -9,6 +9,30 @@ data_base = db.DataBase(os.path.join(CURR_PATH, db.DATABASE_FILE_NAME))
 
 
 def login(req):
-	if data_base.contains(req.GET['uname'] + ' ' + req.GET['pswd']):
-		return render(req, 'next.html', {})
+	uname = req.GET.get('uname')
+	pswd = req.GET.get('psw')
+	if uname is not None and pswd is not None:
+		if data_base.contains(uname + ' ' + pswd):
+			return render(req, 'actor.html', {})
 	return render(req, 'login.html', dict(show_alert='true'))
+
+def home(req):
+	return render(req, 'home.html', {})
+
+def contact(req):
+	return render(req, 'home.html', {})
+
+def about(req):
+	return render(req, 'about.html')
+
+def add_detail(req):
+	return render(req, 'add_detail.html')
+
+def view_details(req):
+	return render(req, 'view_details.html')
+
+def actor(req):
+	return render(req, 'actor.html')
+
+def timeline(req):
+	return render(req, 'timeline.html')

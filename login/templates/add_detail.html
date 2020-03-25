@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+
+<script>
+function openGoBack() {
+  window.open("actor.html");
+}
+
+function openLogout() {
+  window.open("home.html");
+}
+
+</script>
+
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url("/static/bg.png")
+  }
+
+
+  /******************  INFORMATION  *******************/
+
+
+  .location {
+    position: fixed;
+    margin: 30px;
+    top:160px;
+  }
+
+  h1 { color: #00fff0; font-family: "Allerta Stencil", Sans-serif; font-size: 40px; font-weight:bold; line-height:48px; margin: 0; }
+
+  h2 { color: #d3d3d3; font-family: 'Source Sans Pro', sans-serif; font-size: 30px; font-style:italic; line-height:32px; margin: 0 0 24px; }
+
+  h3 { font-size:35px; color: #d3d3d3; font-family: 'Allerta Stencil', sans-serif; }
+
+
+  /***********************  FORM INPUT  ***********************/
+
+
+  #i1[type=text]{
+    width: 350px;
+    padding: 12px 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 18px
+  }
+
+  .input,.ta{
+    width: 400px;
+    padding: 12px 5px;
+    margin: 8px 0;
+    border: 2px solid rgba(0,200,200,0.8);
+    box-sizing: border-box;
+    font-size: 25px;
+  }
+
+  label {
+    padding: 12px 40px;
+  }
+
+
+  /*********************  HORIZONTAL BAR 1  ***********************/
+
+
+  .topnav {
+    background: rgb(0, 0, 0); /* Fallback color */
+    background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+    color: #f1f1f1;
+    width: 100%;
+    height:78px;
+  }
+
+  .topnav button {
+    float: right;
+    color: #f2f2f2;
+    padding: 10px 26px;
+    text-decoration: none;
+    font-size: 20px;
+  }
+
+
+  /**********************  HORIZONTAL BAR 2  ***************************/
+  
+
+  .topbar2 {
+    background: rgb(0, 0, 0); /* Fallback color */
+    background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+    color: #f1f1f1;
+    width: 100%;
+    height:8px;
+    padding:8px;
+  }
+
+  .blocks {
+    position: fixed;
+    top: 126px;
+    text-align: center;
+    width: 140px;  
+    height: 250px;  
+    background: rgba(0,255,255,0.4);
+  }
+
+
+  /****************  BUTTONS  *****************/
+
+
+  .button {
+    font-size: 30px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: rgba(0,255,255,0.6);
+    border: none;
+    border-radius: 20px;
+    box-shadow: 9px 9px rgba(255,255,255,0.6);
+  }
+
+  .button:active {
+    background-color: rgba(150,150,150,0.8);
+    box-shadow: 5px 5px #666;
+    transform: translateY(4px);
+  }
+
+
+  /**************************  SEARCH  *********************************/
+
+
+  .topnav .search-container {
+    position: absolute;
+    top:60px;
+    right:40px;
+  }
+
+  .topnav input[type=text] {
+    padding: 6px;
+    font-size: 17px;
+    border: cyan;
+  }
+
+  .topnav .search-container button {
+    float: right;
+    padding: 6px 10px;
+    margin-right: 16px;
+    background: rgba(0,255,255,0.8);
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .topnav .search-container button:hover {
+    background: #000000;
+  }
+
+  @media screen and (max-width: 600px) {
+    .topnav .search-container {
+      float: none;
+    }
+    .topnav input[type=text], .search-container button {
+      float: none;
+      display: block;
+      text-align: left;
+      width: 100%;
+      margin: 0;
+      padding: 14px;
+    } 
+    .topnav input[type=text] {
+      border: 1px solid #ccc;  
+    }
+  }
+
+
+</style>
+
+
+
+<body>
+
+
+  <br><br>
+  <div class="topnav">
+  
+    <img src="/static/logo.png" height=50px width=50px align="left" style=" position: absolute; top: 50px;left:50px;">
+    <font style=" position: absolute; top: 20px;left:110px;"><h3>CTC</h3></font>
+
+    <div class="search-container">
+      <form action="">
+        <input type="text" placeholder="Search..." name="search">
+        <button type="submit"><i class="fa fa-search"></i></button>
+      </form>
+    </div>
+
+  </div><br>
+
+  <div class="topbar2"></div>
+
+  <div class="location">
+    <h1>HEY (****USERNAME****)!<br></h1>
+    <h2>Fill in the form to add the block.</h2>
+  </div>
+
+  <a href="help.html" style="position: absolute;bottom: 20px;right: 60px;"><h3 style=" font-size: 20px;">Need help?</h3></a>
+
+  <form id="add" >
+    <fieldset style="position: absolute;top:200px;left:650px;width:800px;height:463px;">
+      <legend><h2>Product details:</h2></legend>
+        <table>
+          <tr>  
+            <td> <h3 style="font-size: 25px"> <label for="pid">Product Id:</label></td>
+            <td><input class="input" type="text" id="pid" name="pid" ></td></h3>
+          </tr>
+          <tr>
+            <td> <h3 style="font-size: 25px"> <label for="pname">Product Name:</label></td>
+            <td><input class="input" type="text" id="pname" name="pname"></td>
+          </tr>
+          <tr>
+            <td> <h3 style="font-size: 25px"> <label for="pname">Product Description:</label></td>
+            <td><textarea class="ta" rows="4" cols="50" name="desc" form="add" placeholder="Enter the description here..."></textarea></td>
+          </tr>
+        </table>
+        <button class="button" type="submit" style="position:absolute;top:400px; left:540px;width:180px;height:50px; font-size: 25px;">SUBMIT</button>
+    </fieldset>
+  </form>
+
+  <button class="button" onclick="openGoBack()" style="position:absolute;top:730px; left:1000px; width:180px;height:50px; font-size: 25px;">GO BACK</button>
+  <button class="button" onclick="openLogout()" style="position:absolute;top:730px; left:1200px;width:180px;height:50px; font-size: 25px;">LOGOUT</button>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
