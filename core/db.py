@@ -31,6 +31,7 @@ class DataBase(object):
         self.force_write = force_write
         self.logger = DefaultLogger if logger is None else logger
         self.instantiate_db()
+
     def instantiate_db(self):
         file_exists = os.path.exists(self.db_name)
         if file_exists:
@@ -54,13 +55,14 @@ class DataBase(object):
         rows = [row + ('\n', '')[row.endswith('\n')] for row in rows]
         with open(self.db_name, 'a') as fh:
             fh.writelines(rows)
+    
     def read(self):
         with open(self.db_name) as fh:
             return fh.read().split('\n')
     
     def contains(self, row):
         print(self.read())
-        return row in self.read()
+        return row in '\n'.join(self.read())
 
 '''
 if __name__ == '__main__':

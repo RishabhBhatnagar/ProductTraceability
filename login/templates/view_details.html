@@ -3,8 +3,11 @@
 
 <script>
   function viewTimeline(){
-    window.open("timeline.html");
-  }
+    url = 'timeline.html?pid=' + document.getElementById('pid').value;
+    hidden_anchor = document.getElementById('hidden_submit');
+    hidden_anchor.href = url;
+    hidden_anchor.click();
+}
 
   function openGoBack() {
   	window.open("actor.html");
@@ -180,10 +183,8 @@
 </style>
 
 
-
 <body>
-
-
+<a href="timeline.html?pid=default" id="hidden_submit" style="display: none">asdf</a>
   <br><br>
   <div class="topnav">
   

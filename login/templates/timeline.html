@@ -6,11 +6,11 @@
 <script>
   
   function openGoBack() {
-    window.open("view_details.html");
+    window.location.href = "view_details.html";
   }
 
   function openLogout() {
-    window.open("home.html");
+    window.location.href="home.html";
   }
 
 
@@ -338,10 +338,10 @@ body {
 
 
 <fieldset style="position: absolute;top:150px;left:650px;width:500px;height:65px;">
-  <h1 style="font-size: 30px">Product Id:</h1> 
+  <h1 style="font-size: 30px">Product Id: {{ pid }} </h1> 
 </fieldset>
 <fieldset style="position: absolute;top:230px;left:625px;width:550px;height:65px;">
-  <h1 style="font-size: 30px">Product Name:</h1> 
+  <h1 style="font-size: 30px">Product Name: {{ pname }}</h1> 
 </fieldset>
 
 
@@ -351,31 +351,49 @@ body {
   <div class="container left">
     <div class="content">
       <h2>Producer</h2>
-      <p>Display details of and added by producer</p>
+      {% for block in producer %}
+        <p>{{ block }}</p>
+      {% endfor %}
     </div>
   </div>
   <div class="container right">
     <div class="content">
       <h2>Processor</h2>
-      <p>Display details of and added by processor</p>
+      {% for block in processor %}
+        <p>{{ block }}</p>
+      {% endfor %}
     </div>
   </div>
   <div class="container left">
     <div class="content">
       <h2>Wholesaler</h2>
-      <p>Display details of and added by wholesaler</p>
+      {% for block in wholesaler %}
+        <p>{{ block }}</p>
+      {% endfor %}
     </div>
   </div>
   <div class="container right">
     <div class="content">
       <h2>Distributor</h2>
-      <p>Display details of and added by distributor</p>
+      {% for block in distributor %}
+        <p>{{ block }}</p>
+      {% endfor %}
     </div>
   </div>
   <div class="container left">
     <div class="content">
       <h2>Retailer</h2>
-      <p>Display details of and added by retailer</p>
+      {% for block in retailer %}
+        <p>{{ block }}</p>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <h2>Other</h2>
+      {% for block in other %}
+        <p>{{ block }}</p>
+      {% endfor %}
     </div>
   </div>
   

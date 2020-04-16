@@ -333,13 +333,16 @@
       border: 1px solid #ccc;  
     }
 }
-
-
 </style>
 
 
 <script>
-
+  if({{ show_alert }}){
+    window.alert("login failed, You are not authorized.")
+  }
+  if({{ login_successful }}){
+    window.alert("Sign Up successful, you may now login.")
+  }
 </script>
 
 
@@ -365,10 +368,10 @@
 <br><div class="topbar2"></div>
 
 <h4>
-  <p class="blocks" style="right:50px;"><br><br><br><br><br><br><br><br><a href="contact.html" style="color: white;"> CONTACT</a></p>
-  <p class="blocks" style="right:210px;"><br><br><br><br><br><br><br><br><a href="login.html" style="color: white;">  LOGIN</a></p>
-  <p class="blocks" style="right:370px;"><br><br><br><br><br><br><br><br><a href="about.html" style="color: white;">  ABOUT</a></p>
-  <p class="blocks" style="right:530px;"><br><br><br><br><br><br><br><br><a href="home.html" style="color: white;">  HOME</a></p>
+  <p class="blocks" style="right:50px;"><br><br><br><br><br><br><br><br><a href="/contact.html" style="color: white;"> CONTACT</a></p>
+  <p class="blocks" style="right:210px;"><br><br><br><br><br><br><br><br><a href="/login.html" style="color: white;">  LOGIN</a></p>
+  <p class="blocks" style="right:370px;"><br><br><br><br><br><br><br><br><a href="/about.html" style="color: white;">  ABOUT</a></p>
+  <p class="blocks" style="right:530px;"><br><br><br><br><br><br><br><br><a href="/home.html" style="color: white;">  HOME</a></p>
 </h4>
 
 <div class="location">
@@ -421,7 +424,6 @@
       <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancellogin">Cancel</button>
       <span class="psw">Forgot <a href="#">password?</a></span>
     </div>
-  
   </form>
 </div>
 
@@ -430,7 +432,7 @@
 
 <div id="id02" class="modal" style="top: 0px;">
   
-  <form class="modal-content animate" action="" style="position: absolute;top:20px;left: 520px;">
+  <form class="modal-content animate" action="/signup" method="get" style="position: absolute;top:20px;left: 520px;">
     
     <div class="imgcontainer">
       <div class="close_signup">
@@ -490,23 +492,20 @@
 
         <tr>
           <td align="right"><label for="psw"><b>Password</b></label></td>
-          <td><input id="i2" type="password" placeholder="Enter Password" name="psw" required></td>
+          <td><input id="i2" type="password" placeholder="Enter Password" name="pswd" required></td>
         </tr>
 
         <tr>
           <td align="right"><label for="psw-repeat"><b>Repeat Password</b></label></td>
           <td><input id="i2" type="password" placeholder="Repeat Password" name="psw-repeat" required></td>
         </tr>
-
       </table>
-      
       <label><input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me </label>
       <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
-
       <div class="modal2">
         <div class="clearfix">
           <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelsignup">Cancel</button>
-          <button type="button" class="signupbtn">Sign Up</button>
+          <input type="submit" value="Sign Up"asdf class="signupbtn" >
         </div>
       </div>
 

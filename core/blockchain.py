@@ -10,7 +10,7 @@ hash_fn = utils.HashBytes(str).sha256
 class Transaction(dict):
     # making it dict to insure json serializability.
     def __init__(self, data=''):
-        if not any(map(lambda x: isinstance(x, data), (None, str))):
+        if not any(map(lambda x: isinstance(data, x), (type(None), str))):
             raise ValueError('data should be either None or a string')
         self.data = data
         super().__init__(data=data)
@@ -26,6 +26,8 @@ class Block(object):
         if not self.are_valid_txs(txs):
             raise ValueError('Transaction must be instances of {} class'.format(Transaction.__name__))
         self.txs = txs
+        # TODO: currently, authority org has been bypassed.
+        self.mine_block()
 
     def are_valid_txs(self, txs):
         # allows empty collection of transactions
@@ -81,19 +83,26 @@ class Blockchain(object):
         if logger is None:
             self.logger = utils.DefaultLogger()
         if self.load_from_file:
-            self.chain = self.load_chain(file_path)
+            _bc = self.load_chain(file_path)
+            self.__dict__ = _bc.__dict__
         else:
             self.chain = [Blockchain.create_genesis_block(self)]
 
     @staticmethod
     def create_genesis_block(self):
         init_tx = Transaction(data='Product Traceability using Blockchain by Rishabh, Sneha, Shrey')
-        return Block('0', [init_tx], self.difficulty_target)
+        first_block = Block('0', [init_tx], self.difficulty_target)
+        first_block.mine_block()
+        return first_block
 
-    def save_chain(self, file_path=None):
+    def save_chain(self, file_path=None, force_write=True):
         file_path = file_path if file_path is not None else self.file_path
         if os.path.exists(file_path):
-            choice = input('Do you want to write in the current file(y/*)? ')
+            self.logger.log('asking for your choice.')
+            if not force_write:
+                choice = input('Do you want to write in the current file(y/*)? ')
+            else:
+                choice = 'y'
             if not choice or choice not in 'Yy':
                 self.logger.log('Current chain not written')
                 return
@@ -113,6 +122,7 @@ class Blockchain(object):
     def create_block(self, txs):
         new_block = Block(self.chain[-1].hash, txs, self.difficulty_target)
         self.chain.append(new_block)
+        self.save_chain()
 
     def validate_chain(self):
         # checks if all the blocks are interlinked with their ancestors.
@@ -123,4 +133,3 @@ class Blockchain(object):
             if not _next.valid_block() or _next.prev_hash != curr.hash:
                 return False
         return True
-
