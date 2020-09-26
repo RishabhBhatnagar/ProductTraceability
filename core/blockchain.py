@@ -1,8 +1,8 @@
-import pickle as pkl
-import utils
 import json
 import os
+import pickle as pkl
 
+import utils
 
 hash_fn = utils.HashBytes(str).sha256
 
@@ -32,7 +32,7 @@ class Block(object):
     def are_valid_txs(self, txs):
         # allows empty collection of transactions
         return all(isinstance(tx, Transaction) for tx in txs)
- 
+
     def generate_pow(self):
         self.nonce = 0
         while not self.valid_block():
@@ -49,7 +49,7 @@ class Block(object):
             return False
         self.logger.log('Mined the block successfully.')
         return True
-    
+
     def valid_block(self):
         '''
         a block object is valid if it's hash matches the difficulty.
@@ -62,7 +62,7 @@ class Block(object):
         self_params.pop('logger', None)
         data = json.dumps(self_params, sort_keys=True).encode()
         return hash_fn(data)
- 
+
     def __repr__(self):
         return self.__dict__.__str__()
 

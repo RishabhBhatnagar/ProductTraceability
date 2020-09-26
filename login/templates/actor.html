@@ -2,7 +2,7 @@
 <html>
 <head>
 
-<script>
+    <script>
 function openAdd() {
   window.open("add_detail.html");
 }
@@ -16,10 +16,11 @@ function openLogout() {
   window.open("home.html");
 }
 
-</script>
+
+    </script>
 
 
-<style>
+    <style>
 
   body {
     margin: 0;
@@ -159,46 +160,57 @@ function openLogout() {
 
 
 
-</style>
 
+    </style>
 
 
 </head>
 <body>
 
 
-  <br><br>
+<br><br>
 
-  <div class="topnav">
-  
-    <img src="/static/logo.png" height=50px width=50px align="left" style=" position: absolute; top: 50px;left:50px;">
+<div class="topnav">
+
+    <img align="left" height=50px src="/static/logo.png" style=" position: absolute; top: 50px;left:50px;" width=50px>
     <font style=" position: absolute; top: 20px;left:110px;"><h3>CTC</h3></font>
 
     <div class="search-container">
-      <form action="">
-        <input type="text" placeholder="Search..." name="search">
-        <button type="submit"><i class="fa fa-search"></i></button>
-      </form>
+        <form action="">
+            <input name="search" placeholder="Search..." type="text">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
     </div>
 
-  </div><br>
+</div>
+<br>
 
-  <div class="topbar2"></div>
-
-   
-  <div class="location">
-    <h1>WELCOME (****USERNAME****)!<br></h1>
-  </div>
-
-<h2 style="position: absolute;top: 325px;left:560px;">      Add a block</h2> <h2 style="position: absolute;top: 325px;left:920px;">    View product details</p></h2>
+<div class="topbar2"></div>
 
 
-<button class="button" onclick="openAdd()" style="position:absolute;top:375px; left:535px"><img height="200px" width="200px" src="/static/add.png"></button>
-<button class="button" onclick="openView()" style="position:absolute;top:375px; left:945px"><img height="200px" width="200px" src="/static/product.png"></button>
+<div class="location">
+    <h1>WELCOME {{ uname }}!<br></h1>
+</div>
 
-<button class="button" onclick="openLogout()" style="position:absolute;top:185px; right:60px;width:200px;height:50px">LOGOUT</button>
+<h2 style="position: absolute;top: 325px;left:560px;"> Add a block</h2>
+<h2 style="position: absolute;top: 325px;left:920px;"> View product details</p></h2>
 
-<a href="help.html" style="position: absolute;bottom: 20px;right: 60px;"><h3 style=" font-size: 20px;">Need help?</h3></a>
+
+<button class="button" onclick="openAdd()" style="position:absolute;top:375px; left:535px"><img height="200px"
+                                                                                                src="/static/add.png"
+                                                                                                width="200px">
+</button>
+<button class="button" onclick="openView()" style="position:absolute;top:375px; left:945px"><img height="200px"
+                                                                                                 src="/static/product.png"
+                                                                                                 width="200px">
+</button>
+
+<button class="button" onclick="openLogout()" style="position:absolute;top:185px; right:60px;width:200px;height:50px">
+    LOGOUT
+</button>
+
+<a href="help.html" style="position: absolute;bottom: 20px;right: 60px;"><h3 style=" font-size: 20px;">Need help?</h3>
+</a>
 
 
 </body>

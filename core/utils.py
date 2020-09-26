@@ -2,21 +2,22 @@
 Module That will provide all the required classes for the project.
 """
 
-import os
-import sys
-import hashlib
-import urllib
-import urllib.parse
-import urllib.error
-import urllib.request
 import builtins
-import tarfile
-import zipfile
+import hashlib
+import os
 import subprocess
+import sys
+import tarfile
+import urllib
+import urllib.error
+import urllib.parse
+import urllib.request
+import zipfile
 
 
 class HashBytes:
     """Hashing ByteLike objects"""
+
     def __init__(self, return_type=str):
         """
         Class to bind all the methods associated with Hashing Bytes together
@@ -61,6 +62,7 @@ class HashStrings(HashBytes):
     """
     Given a String, Hash it.
     """
+
     @classmethod
     def convert_to_bytes(cls, ip_str):
         """
@@ -106,6 +108,7 @@ def read_file_bin(file_addr):
 
 class HashFiles(HashBytes):
     '''Hash the contents of a file given file_path'''
+
     def sha512(self, file_addr):
         return super().sha512(read_file_bin(file_addr))
 
@@ -117,6 +120,7 @@ class Node:
     """
     Basic Blockchain Node.
     """
+
     def __init__(self, prev_hash):
         """
         Some of the many attributes has been added.
@@ -238,7 +242,8 @@ def run_command(command):
 class DefaultLogger:
     def __init__(self):
         pass
+
     def log(self, *args, **kw):
         # Augiwan's answer: https://stackoverflow.com/questions/2654113/how-to-get-the-callers-method-name-in-the-called-method
         caller = sys._getframe().f_back.f_code.co_name
-        print('{} says: :'.format(caller), *args, **kw)
+        print('{} says:'.format(caller), *args, **kw)

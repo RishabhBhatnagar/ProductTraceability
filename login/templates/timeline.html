@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<script>
+    <script>
   
   function openGoBack() {
     window.location.href = "view_details.html";
@@ -14,10 +14,11 @@
   }
 
 
-</script>
+
+    </script>
 
 
-<style>
+    <style>
 * {
   box-sizing: border-box;
 }
@@ -315,7 +316,8 @@ body {
   left: 0%;
   }
 }
-</style>
+
+    </style>
 </head>
 <body>
 
@@ -323,86 +325,88 @@ body {
 <br><br>
 
 <div class="topnav">
-    <img src="/static/logo.png" height=50px width=50px align="left" style=" position: absolute; top: 50px;left:50px;">
+    <img align="left" height=50px src="/static/logo.png" style=" position: absolute; top: 50px;left:50px;" width=50px>
     <font style=" position: absolute; top: 20px;left:110px;"><h3>CTC</h3></font>
 
     <div class="search-container">
-      <form action="">
-        <input id="is" type="text" placeholder="Search..." name="search">
-        <button type="submit"><i class="fa fa-search"></i></button>
-      </form>
+        <form action="">
+            <input id="is" name="search" placeholder="Search..." type="text">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
     </div>
 </div>
 
-<br><div class="topbar2"></div>
+<br>
+<div class="topbar2"></div>
 
 
 <fieldset style="position: absolute;top:150px;left:650px;width:500px;height:65px;">
-  <h1 style="font-size: 30px">Product Id: {{ pid }} </h1> 
+    <h1 style="font-size: 30px">Product Id: {{ pid }} </h1>
 </fieldset>
 <fieldset style="position: absolute;top:230px;left:625px;width:550px;height:65px;">
-  <h1 style="font-size: 30px">Product Name: {{ pname }}</h1> 
+    <h1 style="font-size: 30px">Product Name: {{ pname }}</h1>
 </fieldset>
-
-
 
 
 <div class="timeline">
-  <div class="container left">
-    <div class="content">
-      <h2>Producer</h2>
-      {% for block in producer %}
-        <p>{{ block }}</p>
-      {% endfor %}
+    <div class="container left">
+        <div class="content">
+            <h2>Producer</h2>
+            {% for block in producer %}
+            <p>{{ block }}</p>
+            {% endfor %}
+        </div>
     </div>
-  </div>
-  <div class="container right">
-    <div class="content">
-      <h2>Processor</h2>
-      {% for block in processor %}
-        <p>{{ block }}</p>
-      {% endfor %}
+    <div class="container right">
+        <div class="content">
+            <h2>Processor</h2>
+            {% for block in processor %}
+            <p>{{ block }}</p>
+            {% endfor %}
+        </div>
     </div>
-  </div>
-  <div class="container left">
-    <div class="content">
-      <h2>Wholesaler</h2>
-      {% for block in wholesaler %}
-        <p>{{ block }}</p>
-      {% endfor %}
+    <div class="container left">
+        <div class="content">
+            <h2>Wholesaler</h2>
+            {% for block in wholesaler %}
+            <p>{{ block }}</p>
+            {% endfor %}
+        </div>
     </div>
-  </div>
-  <div class="container right">
-    <div class="content">
-      <h2>Distributor</h2>
-      {% for block in distributor %}
-        <p>{{ block }}</p>
-      {% endfor %}
+    <div class="container right">
+        <div class="content">
+            <h2>Distributor</h2>
+            {% for block in distributor %}
+            <p>{{ block }}</p>
+            {% endfor %}
+        </div>
     </div>
-  </div>
-  <div class="container left">
-    <div class="content">
-      <h2>Retailer</h2>
-      {% for block in retailer %}
-        <p>{{ block }}</p>
-      {% endfor %}
+    <div class="container left">
+        <div class="content">
+            <h2>Retailer</h2>
+            {% for block in retailer %}
+            <p>{{ block }}</p>
+            {% endfor %}
+        </div>
     </div>
-  </div>
-  <div class="container right">
-    <div class="content">
-      <h2>Other</h2>
-      {% for block in other %}
-        <p>{{ block }}</p>
-      {% endfor %}
+    <div class="container right">
+        <div class="content">
+            <h2>Other</h2>
+            {% for block in other %}
+            <p>{{ block }}</p>
+            {% endfor %}
+        </div>
     </div>
-  </div>
-  
+
 </div>
 
 
-<button class="button" onclick="openGoBack()" style="position:absolute;top:165px; right:50px; width:180px;height:50px; font-size: 25px;">GO BACK</button>
-<button class="button" onclick="openLogout()" style="position:absolute;top:245px; right:50px; width:180px;height:50px; font-size: 25px;">LOGOUT</button>
-
+<button class="button" onclick="openGoBack()"
+        style="position:absolute;top:165px; right:50px; width:180px;height:50px; font-size: 25px;">GO BACK
+</button>
+<button class="button" onclick="openLogout()"
+        style="position:absolute;top:245px; right:50px; width:180px;height:50px; font-size: 25px;">LOGOUT
+</button>
 
 
 </body>

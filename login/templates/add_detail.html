@@ -10,6 +10,7 @@ function openLogout() {
   window.open("home.html");
 }
 
+
 </script>
 
 <style>
@@ -173,60 +174,70 @@ function openLogout() {
   }
 
 
-</style>
 
+</style>
 
 
 <body>
 
 
-  <br><br>
-  <div class="topnav">
-  
-    <img src="/static/logo.png" height=50px width=50px align="left" style=" position: absolute; top: 50px;left:50px;">
+<br><br>
+<div class="topnav">
+
+    <img align="left" height=50px src="/static/logo.png" style=" position: absolute; top: 50px;left:50px;" width=50px>
     <font style=" position: absolute; top: 20px;left:110px;"><h3>CTC</h3></font>
 
     <div class="search-container">
-      <form action="">
-        <input type="text" placeholder="Search..." name="search">
-        <button type="submit"><i class="fa fa-search"></i></button>
-      </form>
+        <form action="">
+            <input name="search" placeholder="Search..." type="text">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
     </div>
 
-  </div><br>
+</div>
+<br>
 
-  <div class="topbar2"></div>
+<div class="topbar2"></div>
 
-  <div class="location">
-    <h1>HEY (****USERNAME****)!<br></h1>
+<div class="location">
+    <h1>HEY {{ uname }}!<br></h1>
     <h2>Fill in the form to add the block.</h2>
-  </div>
+</div>
 
-  <a href="help.html" style="position: absolute;bottom: 20px;right: 60px;"><h3 style=" font-size: 20px;">Need help?</h3></a>
+<a href="help.html" style="position: absolute;bottom: 20px;right: 60px;"><h3 style=" font-size: 20px;">Need help?</h3>
+</a>
 
-  <form id="add" action="product_detail_hander" method="get">
+<form action="product_detail_hander" id="add" method="get">
     <fieldset style="position: absolute;top:200px;left:650px;width:800px;height:463px;">
-      <legend><h2>Product details:</h2></legend>
+        <legend><h2>Product details:</h2></legend>
         <table>
-          <tr>  
-            <td> <h3 style="font-size: 25px"> <label for="pid">Product Id:</label></td>
-            <td><input class="input" type="text" id="pid" name="pid" ></td></h3>
-          </tr>
-          <tr>
-            <td> <h3 style="font-size: 25px"> <label for="pname">Product Name:</label></td>
-            <td><input class="input" type="text" id="pname" name="pname"></td>
-          </tr>
-          <tr>
-            <td> <h3 style="font-size: 25px"> <label for="pname">Product Description:</label></td>
-            <td><textarea class="ta" rows="4" cols="50" name="desc" form="add" placeholder="Enter the description here..."></textarea></td>
-          </tr>
+            <tr>
+                <td><h3 style="font-size: 25px"><label for="pid">Product Id:</label></td>
+                <td><input class="input" id="pid" name="pid" type="text"></td>
+                </h3>
+            </tr>
+            <tr>
+                <td><h3 style="font-size: 25px"><label for="pname">Product Name:</label></td>
+                <td><input class="input" id="pname" name="pname" type="text"></td>
+            </tr>
+            <tr>
+                <td><h3 style="font-size: 25px"><label for="pname">Product Description:</label></td>
+                <td><textarea class="ta" cols="50" form="add" name="desc" placeholder="Enter the description here..."
+                              rows="4"></textarea></td>
+            </tr>
         </table>
-        <button class="button" type="submit" style="position:absolute;top:400px; left:540px;width:180px;height:50px; font-size: 25px;">SUBMIT</button>
+        <button class="button" style="position:absolute;top:400px; left:540px;width:180px;height:50px; font-size: 25px;"
+                type="submit">SUBMIT
+        </button>
     </fieldset>
-  </form>
+</form>
 
-  <button class="button" onclick="openGoBack()" style="position:absolute;top:730px; left:1000px; width:180px;height:50px; font-size: 25px;">GO BACK</button>
-  <button class="button" onclick="openLogout()" style="position:absolute;top:730px; left:1200px;width:180px;height:50px; font-size: 25px;">LOGOUT</button>
+<button class="button" onclick="openGoBack()"
+        style="position:absolute;top:730px; left:1000px; width:180px;height:50px; font-size: 25px;">GO BACK
+</button>
+<button class="button" onclick="openLogout()"
+        style="position:absolute;top:730px; left:1200px;width:180px;height:50px; font-size: 25px;">LOGOUT
+</button>
 
 </body>
 </html>

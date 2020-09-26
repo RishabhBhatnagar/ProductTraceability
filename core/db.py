@@ -1,10 +1,9 @@
-import requests
-import re
 import os
-import flask
-import flask_restful
-from utils import DefaultLogger
+import re
 
+import flask_restful as flask
+import requests
+from utils import DefaultLogger
 
 STATIC_GITHUB_LINK = 'https://raw.githubusercontent.com/sem7vii/blockchain/master/link'
 DATABASE_FILE_NAME = 'file'
@@ -14,7 +13,7 @@ def get_login_server_link():
     return re.sub('[\b\n\r\s]', '', requests.get(STATIC_GITHUB_LINK).text)
 
 
-class ValidateUser(flask_restful.Resource):
+class ValidateUser(flask.Resource):
     def get(self, user_id, pswd_hash):
         global db
         return db.contains('{} {}'.format(user_id, pswd_hash))
@@ -29,7 +28,7 @@ class DataBase(object):
         '''
         self.db_name = file_path
         self.force_write = force_write
-        self.logger = DefaultLogger if logger is None else logger
+        self.logger = DefaultLogger() if logger is None else logger
         self.instantiate_db()
 
     def instantiate_db(self):
@@ -44,7 +43,7 @@ class DataBase(object):
         with open(self.db_name, 'w'):
             pass
         self.logger.log('Created a new DB.')
-    
+
     def add(self, rows):
         '''
         rows: list of lines to append to database.
@@ -55,14 +54,14 @@ class DataBase(object):
         rows = [row + ('\n', '')[row.endswith('\n')] for row in rows]
         with open(self.db_name, 'a') as fh:
             fh.writelines(rows)
-    
+
     def read(self):
         with open(self.db_name) as fh:
             return fh.read().split('\n')
-    
+
     def contains(self, row):
-        print(self.read())
         return row in '\n'.join(self.read())
+
 
 '''
 if __name__ == '__main__':

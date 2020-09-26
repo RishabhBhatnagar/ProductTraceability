@@ -2,14 +2,12 @@
 All the functions related to ipfs are present in this file.
 """
 
-
+import math
 import os
 import re
 import sys
-import math
-import subprocess
-import utils
 
+import utils
 
 IPFS_LINKS = {
     32: dict(
@@ -43,12 +41,12 @@ def install_ipfs(quiet=False):
     '''
     if ipfs_installed():
         return True
-    os_name = os.name   # either of ('posix', 'nt', 'java')
+    os_name = os.name  # either of ('posix', 'nt', 'java')
     n_bits = 32 << bool(sys.maxsize >> 32)
     ipfs_url = IPFS_LINKS.get(n_bits, dict()).get(os_name, None)
     file_extension = ('zip', 'tar.gz')[os.name == 'posix']
     output_file_name = 'ipfs.' + file_extension
-    ipfs_dir_name = 'go-ipfs'     # dir after unzipping.
+    ipfs_dir_name = 'go-ipfs'  # dir after unzipping.
     if ipfs_url is None:
         raise NotImplementedError('Program doesn\'t support your OS yet.')
     downloaded = utils.wget(
@@ -98,9 +96,7 @@ def upload_from_path(path):
     try:
         hash_values = re.findall('(?<=added\s)\w+', op)
     except:
-        return None   # File couldn't be uploaded
+        return None  # File couldn't be uploaded
     for hash_value in hash_values:
         utils.run_command('ipfs pin add ' + hash_value)
     return hash_values
-
-

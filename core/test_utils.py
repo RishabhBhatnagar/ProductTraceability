@@ -1,7 +1,8 @@
-import uuid
-import utils
 import unittest
 import unittest.mock as mock
+import uuid
+
+import utils
 
 
 class TestHashBytes(unittest.TestCase):
@@ -33,6 +34,7 @@ class TestHashFiles(unittest.TestCase):
     create: create attributes that doesn't exists.
     first_parameter: function to be mocked.
     '''
+
     def test_file_absent(self):
         file_name = str(uuid.uuid4())
         hasher = utils.HashFiles()
@@ -43,4 +45,3 @@ class TestHashFiles(unittest.TestCase):
     def test_file_present_with_permission(self):
         hasher = utils.HashFiles()
         self.assertIsInstance(hasher.sha256('file'), str)
-
